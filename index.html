@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Pushkarjay Ajay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <button id="refreshBtn">Refresh</button>
+        <div class="weather-dashboard">Weather Dashboard</div>
+        <button id="themeToggle">Toggle Theme</button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter City Name" aria-label="Enter city name">
+            <button id="getWeatherBtn">Get Weather</button>
+        </div>
+
+        <div id="weatherCard" class="weather-card">
+            <div id="loading" class="loading">Loading...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            <div id="weatherInfo" style="display: none;">
+                <h2 id="cityName"></h2>
+                <p id="currentTemp"></p>
+                <p id="weatherCondition"></p>
+                <p id="humidity"></p>
+                <p id="windSpeed"></p>
+                <img id="weatherIcon" alt="Weather Icon">
+            </div>
+        </div>
+
+        <div id="forecastContainer" class="forecast-container" style="display: none;">
+            <h3>5-Day Forecast</h3>
+            <div id="forecastList" class="forecast-list"></div>
+        </div>
+
+        <div id="recentSearches" class="recent-searches">
+            <h3>Recent Searches</h3>
+            <ul id="searchHistory"></ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-column">
+            <p>Developer Info: Pushkarjay Ajay<br>Phone: 8210164935<br>Email: pushkarjay.ajay1@gmail.com</p>
+        </div>
+        <div class="footer-column">
+            <p>GitHub Repo: <a href="https://pushkarjay.github.io/weather-dashboard/" target="_blank">https://pushkarjay.github.io/weather-dashboard/</a><br>
+            Working Site: <a href="https://pushkarjay.github.io/weather-dashboard/" target="_blank">https://pushkarjay.github.io/weather-dashboard/</a></p>
+        </div>
+        <div class="footer-column">
+            <p>Technology Used:<br>Framework: HTML, CSS, JS<br>API: OpenWeatherMap</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
