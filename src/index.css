@@ -1,3 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.min-h-screen {
+  min-height: 100vh;
+}
+.bg-gradient-to-br.from-blue-300.to-yellow-200 {
+  background: linear-gradient(to bottom right, #93c5fd, #fef08a);
+}
+.bg-gradient-to-br.from-orange-500.to-yellow-400 {
+  background: linear-gradient(to bottom right, #f97316, #fde047);
+}
+/* Add other gradients as needed */
+.weather-card {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 20rem;
+  width: 100%;
+}
