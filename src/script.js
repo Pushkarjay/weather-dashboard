@@ -1,5 +1,4 @@
-// src/script.js
-const API_KEY = "186cc703721ace3e3f1db173b26a6281";
+const API_KEY = "186cc703721ace3e3f1db173b26a6281"; // Replace with your actual API key if different
 const root = document.getElementById("root");
 
 function getBackground(weather) {
@@ -36,9 +35,9 @@ function fetchWeather(city) {
       const weather = data;
       const html = `
         <div class="${getCardBackground(weather)} weather-card">
-          <h2 class="text-3xl font-bold text-black mb-2">${weather.name}</h2>
-          <img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" alt="Weather icon" class="mx-auto mb-4" />
-          <p class="text-2xl font-semibold text-black">${Math.round(weather.main.temp)}°C</p>
+          <h2 class="text-3xl font-bold text-black mb-2 city-name">${weather.name}</h2>
+          <img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" alt="Weather icon" class="weather-icon mx-auto mb-4" />
+          <p class="text-2xl font-semibold text-black temp-value">${Math.round(weather.main.temp)}°C</p>
           <p class="text-lg text-black capitalize">${weather.weather[0].description}</p>
           <p class="text-md text-black mt-2">Humidity: ${weather.main.humidity}%</p>
           <p class="text-md text-black">Wind: ${weather.wind.speed} m/s</p>
@@ -55,6 +54,17 @@ function fetchWeather(city) {
     });
 }
 
+function createParticles() {
+  const particleCount = 20;
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.animationDelay = `${Math.random() * 5}s`;
+    root.insertBefore(particle, root.firstChild);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.createElement("form");
   form.className = "mb-8 flex gap-2";
@@ -68,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
   h1.textContent = "Weather Dashboard";
   h1.className = "text-4xl font-extrabold text-black mb-8 drop-shadow-[0_2px_2px_rgba(255,149,0,0.8)]";
   root.insertBefore(h1, form);
+
+  createParticles();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
