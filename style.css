@@ -24,17 +24,45 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient for header */
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header.dark-theme {
+  background: linear-gradient(to right, #4b79a1, #283e51); /* Dark gradient */
+  color: #e0e0e0;
 }
 
 header button {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  background-color: #0056b3;
-  color: white;
+  background: #ff6f61; /* Vibrant button color */
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+header button:hover {
+  background: #ff3d2e; /* Darker shade on hover */
+  transform: scale(1.1);
+}
+
+header button.dark-theme {
+  background: #3a6073;
+}
+
+header button.dark-theme:hover {
+  background: #2c5364;
+}
+
+#clearDashboardBtn {
+  background-color: #dc3545; /* Red color for clear button */
+}
+
+#clearDashboardBtn:hover {
+  background-color: #c82333; /* Darker red on hover */
 }
 
 header .weather-dashboard {
@@ -72,19 +100,42 @@ main {
 
 /* Improve Weather Card Layout */
 .weather-card {
-  background: white;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* Subtle gradient */
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1rem;
   align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.weather-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .weather-card.dark-theme {
-  background: #2c2c2c;
+  background: linear-gradient(to bottom, #2c3e50, #34495e); /* Dark gradient */
+  color: #e0e0e0;
+}
+
+/* Weather Conditions */
+.weather-card.sunny {
+  background: linear-gradient(to bottom, #ffeb3b, #ffc107); /* Sunny shades */
+  color: #333;
+}
+
+.weather-card.rainy {
+  background: linear-gradient(to bottom, #4fc3f7, #0288d1); /* Rainy shades */
+  color: #fff;
+}
+
+.weather-card.cool {
+  background: linear-gradient(to bottom, #b3e5fc, #81d4fa); /* Cool shades */
+  color: #333;
 }
 
 #weatherInfo h2 {
@@ -130,11 +181,17 @@ main {
   border-radius: 4px;
   min-width: 150px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.forecast-item.dark-theme {
-  background: #333;
-  color: #fff;
+.forecast-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #e3f2fd; /* Light blue shade */
+}
+
+.forecast-item.dark-theme:hover {
+  background-color: #455a64; /* Darker blue-gray shade */
 }
 
 .recent-searches {
@@ -151,15 +208,16 @@ main {
   margin: 0.5rem 0;
   border-radius: 4px;
   cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #searchHistory li:hover {
+  transform: scale(1.05);
   background: #d3d9df;
-  transition: background 0.3s;
 }
 
 #searchHistory li.dark-theme:hover {
-  background: #444;
+  background-color: #555; /* Slightly lighter dark shade */
 }
 
 /* Footer */
@@ -167,9 +225,15 @@ footer {
   display: flex;
   justify-content: space-around;
   padding: 2rem;
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient for footer */
+  color: #fff;
   margin-top: 2rem;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer.dark-theme {
+  background: linear-gradient(to right, #4b79a1, #283e51); /* Dark gradient */
+  color: #e0e0e0;
 }
 
 .footer-column {
@@ -178,7 +242,17 @@ footer {
 
 .footer-column a {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-column a:hover {
+  transform: scale(1.1);
+  color: #ffcccb; /* Light pink */
+}
+
+.footer-column a.dark-theme:hover {
+  color: #a0c4ff; /* Light blue */
 }
 
 /* Responsive Design */
@@ -216,4 +290,86 @@ footer {
 
 .weather-card, .forecast-container, .recent-searches {
   animation: fadeIn 0.5s ease-in;
+}
+
+/* Animations */
+button, .weather-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .weather-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active, .weather-card:active {
+  transform: scale(0.95);
+}
+
+/* Hover Animations for Buttons */
+button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: #ff3d2e; /* Slightly darker shade */
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Hover Animations for Weather Card */
+.weather-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Animations for Forecast Items */
+.forecast-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.forecast-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #e3f2fd; /* Light blue shade */
+}
+
+.forecast-item.dark-theme:hover {
+  background-color: #455a64; /* Darker blue-gray shade */
+}
+
+/* Hover Animations for Recent Search Items */
+#searchHistory li {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#searchHistory li:hover {
+  transform: scale(1.05);
+  background-color: #d3d9df; /* Slightly darker shade */
+}
+
+#searchHistory li.dark-theme:hover {
+  background-color: #555; /* Slightly lighter dark shade */
+}
+
+/* Hover Animations for Footer Links */
+.footer-column a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-column a:hover {
+  transform: scale(1.1);
+  color: #ffcccb; /* Light pink */
+}
+
+.footer-column a.dark-theme:hover {
+  color: #a0c4ff; /* Light blue */
 }

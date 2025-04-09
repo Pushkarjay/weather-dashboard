@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forecastContainer = document.getElementById('forecastContainer');
     const forecastList = document.getElementById('forecastList');
     const searchHistory = document.getElementById('searchHistory');
+    const clearDashboardBtn = document.getElementById('clearDashboardBtn');
 
     // Theme Toggle
     themeToggle.addEventListener('click', () => {
@@ -28,6 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshBtn.addEventListener('click', () => {
         const currentCity = cityInput.value || localStorage.getItem('lastCity');
         if (currentCity) fetchWeather(currentCity);
+    });
+
+    // Clear Dashboard Button
+    clearDashboardBtn.addEventListener('click', () => {
+        // Clear localStorage
+        localStorage.removeItem('recentSearches');
+        localStorage.removeItem('lastCity');
+        recentSearches = [];
+
+        // Clear UI elements
+        cityInput.value = '';
+        weatherInfo.style.display = 'none';
+        forecastContainer.style.display = 'none';
+        searchHistory.innerHTML = '';
+        error.style.display = 'none';
+        loading.style.display = 'none';
+
+        // Reset weather card styles
+        weatherCard.classList.remove('sunny', 'rainy', 'cool');
     });
 
     // Search on Enter or Button Click
@@ -75,6 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
             document.getElementById('windSpeed').textContent = `Wind Speed: ${data.wind.speed} km/h`;
             document.getElementById('weatherIcon').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+            // Apply weather condition styles
+            weatherCard.classList.remove('sunny', 'rainy', 'cool');
+            if (data.main.temp > 25 && data.weather[0].main.toLowerCase() === 'clear') {
+                weatherCard.classList.add('sunny');
+            } else if (data.weather[0].main.toLowerCase().includes('rain')) {
+                weatherCard.classList.add('rainy');
+            } else {
+                weatherCard.classList.add('cool');
+            }
 
             // Add to Recent Searches
             if (!recentSearches.includes(city)) {
