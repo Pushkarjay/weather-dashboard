@@ -1,65 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata and title for the Weather Dashboard -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard - Pushkarjay Ajay</title>
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Header Section -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
+        <!-- Refresh button -->
         <button id="refreshBtn">Refresh</button>
-        <div class="weather-dashboard">Weather Dashboard</div>
+        <!-- Dashboard title -->
+        <button class="weather-dashboard" style="font-size: 1.5rem; font-weight: bold;">Weather Dashboard</button>
+        <!-- Theme toggle button -->
         <button id="themeToggle">Toggle Theme</button>
+        <!-- Clear dashboard button -->
         <button id="clearDashboardBtn">Clear Dashboard</button>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <div class="search-container">
-            <input type="text" id="cityInput" placeholder="Enter City Name" aria-label="Enter city name">
-            <button id="getWeatherBtn">Get Weather</button>
+    <!-- Main Content Section -->
+    <main style="display: flex; flex-direction: column; align-items: center; padding: 1rem;">
+        <!-- Search container for city input and weather button -->
+        <div class="search-container" style="display: flex; gap: 1rem; margin-bottom: 2rem; width: 100%; max-width: 600px;">
+            <input type="text" id="cityInput" placeholder="Enter City Name" aria-label="Enter city name" style="flex: 1; padding: 0.5rem;">
+            <button id="getWeatherBtn" style="padding: 0.5rem 1rem;">Get Weather</button>
         </div>
 
-        <div id="weatherCard" class="weather-card">
-            <div id="loading" class="loading">Loading...</div>
-            <div id="error" class="error" style="display: none;"></div>
-            <div id="weatherInfo" style="display: none;">
-                <h2 id="cityName"></h2>
-                <p id="currentTemp"></p>
-                <p id="weatherCondition"></p>
-                <p id="humidity"></p>
-                <p id="windSpeed"></p>
-                <img id="weatherIcon" alt="Weather Icon">
+        <!-- Container for forecast, weather card, and recent searches -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%; max-width: 100%; overflow-x: auto;">
+            <!-- 5-Day Forecast Section -->
+            <div id="forecastContainer" class="forecast-container" style="flex: 1; min-width: 300px; display: none; padding: 1rem;">
+                <h3>5-Day Forecast</h3>
+                <div id="forecastList" class="forecast-list" style="display: flex; gap: 1rem; overflow-x: auto;"></div>
             </div>
-        </div>
 
-        <div id="forecastContainer" class="forecast-container" style="display: none;">
-            <h3>5-Day Forecast</h3>
-            <div id="forecastList" class="forecast-list"></div>
-        </div>
+            <!-- Weather Card Section -->
+            <div id="weatherCard" class="weather-card" style="flex: 1; min-width: 300px; padding: 1rem; text-align: center;">
+                <!-- Loading indicator -->
+                <div id="loading" class="loading">Loading...</div>
+                <!-- Error message -->
+                <div id="error" class="error" style="display: none;"></div>
+                <!-- Weather information -->
+                <div id="weatherInfo" style="display: none;">
+                    <h2 id="cityName"></h2>
+                    <p id="currentTemp"></p>
+                    <p id="weatherCondition"></p>
+                    <p id="humidity"></p>
+                    <p id="windSpeed"></p>
+                    <img id="weatherIcon" alt="Weather Icon">
+                </div>
+            </div>
 
-        <div id="recentSearches" class="recent-searches">
-            <h3>Recent Searches</h3>
-            <ul id="searchHistory"></ul>
+            <!-- Recent Searches Section -->
+            <div id="recentSearches" class="recent-searches" style="flex: 1; min-width: 300px; padding: 1rem;">
+                <h3>Recent Searches</h3>
+                <ul id="searchHistory" style="list-style: none; padding: 0;"></ul>
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
+        <!-- Developer Information -->
         <div class="footer-column">
             <p>Developer Info: Pushkarjay Ajay<br>Phone: 8210164935<br>Email: pushkarjay.ajay1@gmail.com</p>
         </div>
+        <!-- GitHub Repository and Working Site -->
         <div class="footer-column">
             <p>GitHub Repo: <a href="https://github.com/Pushkarjay/weather-dashboard.git" target="_blank">https://github.com/Pushkarjay/weather-dashboard.git</a><br>
             Working Site: <a href="https://pushkarjay.github.io/weather-dashboard/" target="_blank">https://pushkarjay.github.io/weather-dashboard/</a></p>
         </div>
+        <!-- Technologies Used -->
         <div class="footer-column">
             <p>Technology Used:<br>Framework: HTML, CSS, JS<br>API: OpenWeatherMap</p>
         </div>
     </footer>
 
+    <!-- Link to external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
